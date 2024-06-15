@@ -10,7 +10,7 @@ const routes = [
     component: MainLayout,
     children: [
       {
-        path: '',
+        path: '/',
         component: Home,
       },
       {
@@ -20,7 +20,6 @@ const routes = [
       {
         path: 'albums/:id',
         component: AlbumPhotos,
-        props: true,
       },
     ],
   },

@@ -16,22 +16,40 @@
   </template>
   
   <script setup>
-  import { onMounted } from 'vue'
-  import { useRouter } from 'vue-router'
-  import { useAlbumStore } from '../stores/albumstore'
+  import { ref, onMounted } from "vue";
+  import { useRouter } from "vue-router";
   
-  const router = useRouter()
-  const albumStore = useAlbumStore()
+  const router = useRouter();
+  const photos = ref([]);
+  const isLoading = ref(false);
   
-  const { photos, isLoading, fetchPhotos } = albumStore
+  const fetchPhotos = async (albumId = 1) => {
+    try {
+      isLoading.value = true;
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+      ); // Directly fetch filtered data
+      const data = await response.json();
+      photos.value = data.map((photo) => ({
+        id: photo.id,
+        thumbnailUrl: photo.thumbnailUrl,
+        url: photo.url,
+        title: photo.title,
+      }));
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+    } finally {
+      isLoading.value = false;
+    }
+  };
   
   const selectPhoto = (photoId) => {
-    router.push({ path: `/albums/${photoId}` })
-  }
+    router.push({ path: `/albums/${photoId}` });
+  };
   
   onMounted(() => {
-    fetchPhotos()
-  })
+    fetchPhotos();
+  });
   </script>
   
   <style scoped>
