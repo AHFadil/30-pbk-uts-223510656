@@ -5,27 +5,6 @@
   </div>
 </template>
 
-<<<<<<< HEAD
-<script>
-export default {
-  data() {
-    return {
-      newActivity: ''
-    };
-  },
-  methods: {
-    addActivity() {
-      if (this.newActivity.trim() !== '') {
-        this.$emit('add', this.newActivity);
-        console.log(`Adding activity: ${this.newActivity}`);
-        this.newActivity = '';
-      }
-    }
-  }
-}
-</script>
-
-=======
 <script setup>
 import { ref } from 'vue';
 import { useActivityStore } from '../stores/store.js';
@@ -44,7 +23,6 @@ const addActivity = () => {
 
 
 
->>>>>>> 61a8c7e (Perubahan Untuk UAS)
 <style scoped>
 input, button {
   padding: 10px;

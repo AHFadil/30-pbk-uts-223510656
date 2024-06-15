@@ -55,77 +55,6 @@
   </div>
 </template>
 
-<<<<<<< HEAD
-<script>
-export default {
-  props: ['activities'],
-  data() {
-    return {
-      showUnfinishedOnly: false,
-      showEditModal: false,
-      editActivityId: null,
-      editActivityName: ''
-    };
-  },
-  computed: {
-    displayedActivities() {
-      if (this.showUnfinishedOnly) {
-        return this.activities.filter(activity => !activity.completed);
-      }
-      return this.activities;
-    },
-    totalActivities() {
-      return this.activities.length;
-    },
-    completedActivities() {
-      return this.activities.filter(activity => activity.completed).length;
-    },
-    remainingActivities() {
-      return this.totalActivities - this.completedActivities;
-    }
-  },
-  methods: {
-    cancelActivity(id) {
-      const index = this.activities.findIndex(activity => activity.id === id);
-      if (index !== -1) {
-        this.activities.splice(index, 1);
-        this.saveActivities();
-      }
-    },
-    toggleComplete(id) {
-      const index = this.activities.findIndex(activity => activity.id === id);
-      if (index !== -1) {
-        this.activities[index].completed = !this.activities[index].completed;
-        this.saveActivities();
-      }
-    },
-    openEditModal(id) {
-      const activity = this.activities.find(a => a.id === id);
-      if (activity) {
-        this.editActivityId = id;
-        this.editActivityName = activity.name;
-        this.showEditModal = true;
-      }
-    },
-    saveEditedActivity() {
-      const index = this.activities.findIndex(a => a.id === this.editActivityId);
-      if (index > -1) {
-        this.activities[index].name = this.editActivityName;
-        this.showEditModal = false;
-        this.saveActivities();
-      }
-    },
-    closeEditModal() {
-      this.showEditModal = false;
-    },
-    saveActivities() {
-      localStorage.setItem('activities', JSON.stringify(this.activities));
-    }
-  }
-}
-</script>
-
-=======
 <script setup>
 import { ref, computed } from 'vue';
 import { useActivityStore } from '../stores/store.js';
@@ -185,7 +114,6 @@ function closeEditModal() {
 </script>
 
 
->>>>>>> 61a8c7e (Perubahan Untuk UAS)
 <style scoped>
 .container {
   width: 100%;
