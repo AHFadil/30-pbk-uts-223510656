@@ -63,8 +63,4 @@ button {
 button:hover {
   background-color: #0056b3;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 61a8c7e (Perubahan Untuk UAS)
 </style>
