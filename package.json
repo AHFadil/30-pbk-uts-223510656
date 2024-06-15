@@ -9,10 +9,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
+=======
+    "@quasar/extras": "^1.16.11",
+    "axios": "^1.7.2",
+    "pinia": "^2.1.7",
+    "quasar": "^2.16.4",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@quasar/vite-plugin": "^1.7.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.5",
+>>>>>>> 61a8c7e (Perubahan Untuk UAS)
     "vite": "^5.2.0"
   }
 }

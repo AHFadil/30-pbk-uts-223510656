@@ -5,6 +5,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script>
 export default {
   data() {
@@ -24,6 +25,26 @@ export default {
 }
 </script>
 
+=======
+<script setup>
+import { ref } from 'vue';
+import { useActivityStore } from '../stores/store.js';
+
+const newActivity = ref('');
+const store = useActivityStore();
+
+const addActivity = () => {
+  if (newActivity.value.trim() !== '') {
+    store.addActivity(newActivity.value);
+    console.log(`Adding activity: ${newActivity.value}`);
+    newActivity.value = '';
+  }
+};
+</script>
+
+
+
+>>>>>>> 61a8c7e (Perubahan Untuk UAS)
 <style scoped>
 input, button {
   padding: 10px;
@@ -42,5 +63,8 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61a8c7e (Perubahan Untuk UAS)
 </style>

@@ -55,6 +55,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script>
 export default {
   props: ['activities'],
@@ -124,6 +125,67 @@ export default {
 }
 </script>
 
+=======
+<script setup>
+import { ref, computed } from 'vue';
+import { useActivityStore } from '../stores/store.js';
+
+const showUnfinishedOnly = ref(false);
+const showEditModal = ref(false);
+const editActivityId = ref(null);
+const editActivityName = ref('');
+
+const store = useActivityStore();
+
+const displayedActivities = computed(() => {
+  return showUnfinishedOnly.value 
+    ? store.activities.filter(activity => !activity.completed)
+    : store.activities;
+});
+
+const totalActivities = computed(() => store.activities.length);
+
+const completedActivities = computed(() => {
+  return store.activities.filter(activity => activity.completed).length;
+});
+
+const remainingActivities = computed(() => {
+  return totalActivities.value - completedActivities.value;
+});
+
+function cancelActivity(id) {
+  store.cancelActivity(id);
+}
+
+function toggleComplete(id) {
+  store.completeActivity(id);
+}
+
+function openEditModal(id) {
+  const activity = store.activities.find(a => a.id === id);
+  if (activity) {
+    editActivityId.value = id;
+    editActivityName.value = activity.name;
+    showEditModal.value = true;
+  }
+}
+
+function saveEditedActivity() {
+  const index = store.activities.findIndex(a => a.id === editActivityId.value);
+  if (index > -1) {
+    store.activities[index].name = editActivityName.value;
+    showEditModal.value = false;
+    store.saveActivities();
+  }
+}
+
+function closeEditModal() {
+  showEditModal.value = false;
+}
+</script>
+
+
+>>>>>>> 61a8c7e (Perubahan Untuk UAS)
 <style scoped>
 .container {
   width: 100%;

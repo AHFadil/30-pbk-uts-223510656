@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <h1>Activity Tracker</h1>
     
     <AddActivity @add="addActivity" />
@@ -75,3 +76,13 @@ export default {
 }
 
 </style>
+=======
+    <RouterView />
+  </div>
+</template>
+
+<script setup>
+import {RouterLink, RouterView} from "vue-router"
+
+</script>
+>>>>>>> 61a8c7e (Perubahan Untuk UAS)
